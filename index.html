@@ -5,18 +5,18 @@
 <title>AI Roadmap</title>
 
 <!-- AOS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+https://unpkg.com/aos@2.3.1/dist/aos.css
+https://unpkg.com/aos@2.3.1/dist/aos.js>
 
 <!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css
 
 <style>
 body {
   margin: 0;
   font-family: Arial;
-  background: linear-gradient(to right, #020617, #0f172a);
-  color: white;
+  background: linear-gradient(to right, #fff7cc, #ffe066);
+  color: #222;
 }
 
 /* HEADER */
@@ -27,13 +27,14 @@ body {
 
 .header h1 {
   font-size: 42px;
+  color: #222;
 }
 
 /* LEVEL TITLE */
 .level {
   margin-top: 50px;
   text-align: center;
-  color: cyan;
+  color: #444;
 }
 
 /* CARD */
@@ -41,10 +42,11 @@ body {
   width: 70%;
   margin: 20px auto;
   border-radius: 15px;
-  background: #1e293b;
+  background: white;
   overflow: hidden;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .card:hover {
@@ -54,8 +56,10 @@ body {
 /* HEADER PART */
 .card-header {
   padding: 20px;
-  background: #0f172a;
+  background: #ffd700;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* CONTENT */
@@ -67,5 +71,49 @@ body {
 /* BUTTON */
 .btn {
   padding: 8px 12px;
-  background: cyan;
-  color: black;
+  background: #222;
+  color: yellow;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* TAG */
+.tag {
+  background: #222;
+  color: yellow;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+</style>
+
+<script>
+function toggleCard(card) {
+  let content = card.querySelector(".card-content");
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🚀 AI Solutions Architect Roadmap</h1>
+  <p>Click each step to expand 👇</p>
+</div>
+
+<!-- BEGINNER -->
+<h2 class="level">🔰 Beginner</h2>
+
+<div class="card" onclick="toggleCard(this)" data-aos="fade-up">
+  <div class="card-header">
+    Python Basics <span class="tag">Week 1</span>
+  </div>
+  <div class="card-content">
+    <p>Learn variables, loops, functions</p>
+    <a class="btn" href="#">Start Learning</a>
+  </div>
+</div>
+
