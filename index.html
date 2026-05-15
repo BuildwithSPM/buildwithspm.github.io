@@ -9,76 +9,101 @@ body {
   margin: 0;
   font-family: Arial;
   background: linear-gradient(135deg, #EAEAF4, #CFCFE7);
-}
-
-/* HEADER */
-.header {
   text-align: center;
-  margin-top: 30px;
 }
 
-.header h1 {
+h1 {
   color: #4B4376;
+  margin-top: 20px;
 }
 
 /* ROAD CONTAINER */
 .road {
   position: relative;
-  width: 90%;
-  margin: 50px auto;
+  width: 400px;
+  margin: auto;
 }
 
 /* SVG ROAD */
 svg {
   width: 100%;
-  height: auto;
 }
 
-/* PIN STYLE */
+/* ROAD BODY */
+.road-main {
+  stroke: #2F2E41;
+  stroke-width: 40;
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* CENTER LINE */
+.road-line {
+  stroke: white;
+  stroke-width: 3;
+  stroke-dasharray: 10,10;
+  fill: none;
+}
+
+/* PIN */
 .pin {
   position: absolute;
-  width: 30px;
-  height: 30px;
-  background: #E4B36D;
-  border-radius: 50%;
-  border: 3px solid #4B4376;
-  cursor: pointer;
   transform: translate(-50%, -50%);
+  cursor: pointer;
+  text-align: center;
 }
 
-.pin:hover {
-  transform: translate(-50%, -50%) scale(1.2);
+.pin-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 5px solid;
+  background: white;
 }
 
-/* Popup */
+.pin p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #3A345B;
+}
+
+/* PIN COLORS */
+.c1 { border-color: #4CAF50; }
+.c2 { border-color: #FF5722; }
+.c3 { border-color: #9C27B0; }
+.c4 { border-color: #2196F3; }
+.c5 { border-color: #FFC107; }
+
+/* POSITIONS (carefully aligned) */
+.p1 { bottom: 50px; left: 120px; }
+.p2 { bottom: 170px; left: 250px; }
+.p3 { bottom: 300px; left: 170px; }
+.p4 { bottom: 420px; left: 300px; }
+.p5 { bottom: 560px; left: 200px; }
+
+/* POPUP CARD */
 .popup {
   display: none;
   position: absolute;
+  width: 200px;
   background: #4B4376;
   color: white;
-  padding: 10px;
-  border-radius: 10px;
-  width: 150px;
+  padding: 15px;
+  border-radius: 20px;
   transform: translate(-50%, -120%);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* POSITIONS (aligned to path visually) */
-.p1 { top: 60%; left: 10%; }
-.p2 { top: 35%; left: 30%; }
-.p3 { top: 65%; left: 50%; }
-.p4 { top: 30%; left: 70%; }
-.p5 { top: 55%; left: 90%; }
-
-/* GOAL */
+/* FINAL DESTINATION */
 .goal {
-  text-align: center;
-  font-size: 24px;
+  margin-top: 20px;
+  font-size: 18px;
   color: #3A345B;
 }
 </style>
 
 <script>
-function toggle(id){
+function openCard(id){
   document.querySelectorAll('.popup').forEach(p => p.style.display="none");
   document.getElementById(id).style.display="block";
 }
@@ -88,62 +113,86 @@ function toggle(id){
 
 <body>
 
-<div class="header">
 <h1>🚀 AI Solutions Architect Roadmap</h1>
-</div>
 
 <div class="road">
 
-<!-- REAL ROAD -->
-<svg viewBox="0 0 1000 400">
+<!-- PERFECT S ROAD (BOTTOM → TOP) -->
+<svg viewBox="0 0 400 700">
 
-  <!-- ROAD BODY -->
-  <path d="M50 300 
-           C200 100, 300 400, 450 250 
-           S700 100, 900 300"
-        stroke="#222"
-        stroke-width="50"
-        fill="none"
-        stroke-linecap="round"/>
+  <!-- ROAD -->
+  <path class="road-main"
+        d="M200 650 
+           C100 550, 300 500, 200 400
+           C100 300, 300 250, 200 150
+           C150 80, 250 50, 200 20"/>
 
-  <!-- CENTER DASH LINE -->
-  <path d="M50 300 
-           C200 100, 300 400, 450 250 
-           S700 100, 900 300"
-        stroke="white"
-        stroke-width="4"
-        fill="none"
-        stroke-dasharray="10,10"/>
+  <!-- CENTER DASH -->
+  <path class="road-line"
+        d="M200 650 
+           C100 550, 300 500, 200 400
+           C100 300, 300 250, 200 150
+           C150 80, 250 50, 200 20"/>
 
 </svg>
 
-<!-- PINS -->
-<div class="pin p1" onclick="toggle('t1')">
-  <div class="popup" id="t1">Python Basics</div>
+<!-- PINS WITH LABELS -->
+
+<div class="pin p1" onclick="openCard('card1')">
+  <div class="pin-circle c5"></div>
+  <p>Python</p>
+  <div class="popup" id="card1">
+    <b>Python Basics</b><br>
+    Variables, Loops<br>
+    Functions, APIs
+  </div>
 </div>
 
-<div class="pin p2" onclick="toggle('t2')">
-  <div class="popup" id="t2">Data Handling</div>
+<div class="pin p2" onclick="openCard('card2')">
+  <div class="pin-circle c2"></div>
+  <p>Data</p>
+  <div class="popup" id="card2">
+    <b>Data Handling</b><br>
+    Numpy<br>
+    Pandas
+  </div>
 </div>
 
-<div class="pin p3" onclick="toggle('t3')">
-  <div class="popup" id="t3">Machine Learning</div>
+<div class="pin p3" onclick="openCard('card3')">
+  <div class="pin-circle c3"></div>
+  <p>ML</p>
+  <div class="popup" id="card3">
+    <b>Machine Learning</b><br>
+    Regression<br>
+    Classification
+  </div>
 </div>
 
-<div class="pin p4" onclick="toggle('t4')">
-  <div class="popup" id="t4">Deep Learning</div>
+<div class="pin p4" onclick="openCard('card4')">
+  <div class="pin-circle c4"></div>
+  <p>DL</p>
+  <div class="popup" id="card4">
+    <b>Deep Learning</b><br>
+    Neural Networks<br>
+    CNN
+  </div>
 </div>
 
-<div class="pin p5" onclick="toggle('t5')">
-  <div class="popup" id="t5">Generative AI</div>
+<div class="pin p5" onclick="openCard('card5')">
+  <div class="pin-circle c1"></div>
+  <p>GenAI</p>
+  <div class="popup" id="card5">
+    <b>Generative AI</b><br>
+    LLMs<br>
+    RAG Systems
+  </div>
 </div>
 
 </div>
 
 <div class="goal">
-🎯 Final Goal → AI Solutions Architect
+🎯 FINAL DESTINATION → AI SOLUTIONS ARCHITECT
 </div>
 
 </body>
 </html>
-``
