@@ -1,184 +1,112 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>AI Roadmap</title>
-
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', Arial;
-  background: linear-gradient(135deg, #EAEAF4, #CFCFE7);
-  color: #222;
-}
 
-/* HEADER */
-.header {
-  text-align: center;
-  padding: 30px;
-}
-
-.header h1 {
-  color: #4B4376;
-}
-
-/* MAIN CONTAINER */
-.container {
+/* ROAD CONTAINER */
+.road {
+  position: relative;
   width: 80%;
-  margin: auto;
+  height: 400px;
+  margin: 50px auto;
 }
 
-/* CARD STYLE */
-.card {
+/* SVG ROAD */
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* STOPS */
+.stop {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: #E4B36D;
+  border-radius: 50%;
+  border: 4px solid #4B4376;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.stop:hover {
+  transform: scale(1.2);
+}
+
+/* POSITIONS */
+.s1 { top: 70%; left: 10%; }
+.s2 { top: 40%; left: 30%; }
+.s3 { top: 65%; left: 50%; }
+.s4 { top: 30%; left: 70%; }
+.s5 { top: 55%; left: 90%; }
+
+/* POPUP CARD */
+.popup {
+  display: none;
+  position: absolute;
   background: #4B4376;
   color: white;
-  margin: 20px 0;
-  border-radius: 20px;
-  padding: 20px;
-  position: relative;
-  transition: 0.3s;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  cursor: pointer;
+  padding: 15px;
+  border-radius: 15px;
+  width: 150px;
+  top: -90px;
+  left: -50px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* HEADER INSIDE CARD */
-.card-header {
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* CONTENT */
-.card-content {
-  display: none;
-  margin-top: 15px;
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background: #E4B36D;
-  color: #222;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* TAG */
-.tag {
-  background: #E4B36D;
-  color: #222;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 12px;
-}
-
-/* LEVEL */
-.level {
-  color: #3A345B;
-  margin-top: 40px;
+/* GOAL */
+.goal {
   text-align: center;
+  font-size: 24px;
+  color: #3A345B;
+  margin-top: 20px;
 }
 
-/* toggle */
 </style>
 
+<div class="road">
+
+<!-- CURVED ROAD USING SVG -->
+<svg>
+  <path d="M50 300 C200 100, 400 500, 600 200, 800 300"
+        stroke="#3A345B"
+        stroke-width="20"
+        fill="none"
+        stroke-linecap="round"
+        stroke-dasharray="10,10"/>
+</svg>
+
+<!-- STOP 1 -->
+<div class="stop s1" onclick="toggle('p1')">
+  <div class="popup" id="p1">Python Basics</div>
+</div>
+
+<!-- STOP 2 -->
+<div class="stop s2" onclick="toggle('p2')">
+  <div class="popup" id="p2">Data Handling</div>
+</div>
+
+<!-- STOP 3 -->
+<div class="stop s3" onclick="toggle('p3')">
+  <div class="popup" id="p3">Machine Learning</div>
+</div>
+
+<!-- STOP 4 -->
+<div class="stop s4" onclick="toggle('p4')">
+  <div class="popup" id="p4">Deep Learning</div>
+</div>
+
+<!-- STOP 5 -->
+<div class="stop s5" onclick="toggle('p5')">
+  <div class="popup" id="p5">Generative AI</div>
+</div>
+
+</div>
+
+<div class="goal">
+🎯 Final Destination → AI Solutions Architect
+</div>
+
 <script>
-function toggleCard(card) {
-  let content = card.querySelector(".card-content");
-  content.style.display = content.style.display === "block" ? "none" : "block";
+function toggle(id){
+  let el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
 }
 </script>
-
-</head>
-
-<body>
-
-<div class="header">
-  <h1>🚀 AI Solutions Architect Roadmap</h1>
-</div>
-
-<div class="container">
-
-<h2 class="level">Beginner</h2>
-
-<div class="card" onclick="toggleCard(this)">
-  <div class="card-header">
-    Python Basics <span class="tag">Week 1</span>
-  </div>
-  <div class="card-content">
-    Learn loops, functions and basics
-    <br>
-    <a class="btn" href="#">Start Learning</a>
-  </div>
-</div>
-
-<div class="card" onclick="toggleCard(this)">
-  <div class="card-header">
-    Data Handling <span class="tag">Week 2</span>
-  </div>
-  <div class="card-content">
-    Numpy, Pandas basics
-    <br>
-    <a class="btn" href="#">Start Learning</a>
-  </div>
-</div>
-
-<h2 class="level">Intermediate</h2>
-
-<div class="card" onclick="toggleCard(this)">
-  <div class="card-header">
-    Machine Learning <span class="tag">Week 5</span>
-  </div>
-  <div class="card-content">
-    Regression, classification
-    <br>
-    <a class="btn" href="#">Start Learning</a>
-  </div>
-</div>
-
-<div class="card" onclick="toggleCard(this)">
-  <div class="card-header">
-    Deep Learning <span class="tag">Week 7</span>
-  </div>
-  <div class="card-content">
-    Neural networks
-    <br>
-    <a class="btn" href="#">Start Learning</a>
-  </div>
-</div>
-
-<h2 class="level">Advanced</h2>
-
-<div class="card" onclick="toggleCard(this)">
-  <div class="card-header">
-    Generative AI <span class="tag">Week 9</span>
-  </div>
-  <div class="card-content">
-    LLMs, Prompt Engineering
-    <br>
-    <a class="btn" href="#">Start Learning</a>
-  </div>
-</div>
-
-<div class="card" onclick="toggleCard(this)">
-  <div class="card-header">
-    System Design <span class="tag">Week 11</span>
-  </div>
-  <div class="card-content">
-    Architecture and scaling
-    <br>
-    <a class="btn" href="#">Start Learning</a>
-  </div>
-</div>
-
-</div>
-
-</body>
-</html>
