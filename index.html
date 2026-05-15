@@ -13,90 +13,98 @@ body {
 }
 
 h1 {
-  color: #4B4376;
   margin-top: 20px;
+  color: #4B4376;
 }
 
 /* ROAD CONTAINER */
-.road {
+.road-container {
   position: relative;
-  width: 400px;
-  margin: auto;
+  height: 700px;
+  margin-top: 20px;
 }
 
-/* SVG ROAD */
+/* ROAD (3D LOOK) */
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* PERSPECTIVE EFFECT */
 svg {
-  width: 100%;
+  width: 400px;
+  height: 700px;
 }
 
-/* ROAD BODY */
+/* ROAD MAIN */
 .road-main {
-  stroke: #2F2E41;
-  stroke-width: 40;
   fill: none;
+  stroke: #2F2E41;
   stroke-linecap: round;
 }
 
 /* CENTER LINE */
 .road-line {
-  stroke: white;
-  stroke-width: 3;
-  stroke-dasharray: 10,10;
   fill: none;
+  stroke: white;
+  stroke-dasharray: 8,8;
 }
 
-/* PIN */
+/* PINS */
 .pin {
   position: absolute;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  text-align: center;
 }
 
-.pin-circle {
-  width: 22px;
-  height: 22px;
+.pin-dot {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  border: 5px solid;
+  border: 4px solid;
   background: white;
 }
 
-.pin p {
-  margin: 5px 0 0;
-  font-size: 13px;
-  color: #3A345B;
-}
-
-/* PIN COLORS */
-.c1 { border-color: #4CAF50; }
+/* COLORS */
+.c1 { border-color: #FFC107; }
 .c2 { border-color: #FF5722; }
 .c3 { border-color: #9C27B0; }
 .c4 { border-color: #2196F3; }
-.c5 { border-color: #FFC107; }
+.c5 { border-color: #4CAF50; }
 
-/* POSITIONS (carefully aligned) */
-.p1 { bottom: 50px; left: 120px; }
-.p2 { bottom: 170px; left: 250px; }
-.p3 { bottom: 300px; left: 170px; }
-.p4 { bottom: 420px; left: 300px; }
-.p5 { bottom: 560px; left: 200px; }
+/* LABEL */
+.pin span {
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+  color: #3A345B;
+}
+
+/* POSITION (aligned visually with perspective) */
+.p1 { bottom: 40px; left: 50%; }
+.p2 { bottom: 160px; left: 55%; }
+.p3 { bottom: 300px; left: 45%; }
+.p4 { bottom: 440px; left: 55%; }
+.p5 { bottom: 580px; left: 50%; }
 
 /* POPUP CARD */
 .popup {
   display: none;
   position: absolute;
-  width: 200px;
   background: #4B4376;
   color: white;
-  padding: 15px;
-  border-radius: 20px;
+  padding: 12px;
+  border-radius: 15px;
+  width: 180px;
   transform: translate(-50%, -120%);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* FINAL DESTINATION */
+/* GOAL */
 .goal {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 18px;
   color: #3A345B;
 }
@@ -115,84 +123,77 @@ function openCard(id){
 
 <h1>🚀 AI Solutions Architect Roadmap</h1>
 
-<div class="road">
+<div class="road-container">
 
-<!-- PERFECT S ROAD (BOTTOM → TOP) -->
+<!-- ✅ 3D EFFECT ROAD -->
 <svg viewBox="0 0 400 700">
 
-  <!-- ROAD -->
+  <!-- ROAD BODY (wide → narrow illusion using stroke-width gradient trick) -->
   <path class="road-main"
-        d="M200 650 
-           C100 550, 300 500, 200 400
-           C100 300, 300 250, 200 150
-           C150 80, 250 50, 200 20"/>
+        d="M200 700 
+           C150 600, 300 500, 200 400
+           C120 300, 280 250, 200 150
+           C180 100, 220 50, 200 10"
+        stroke-width="60"/>
 
-  <!-- CENTER DASH -->
+  <!-- CENTER LINE -->
   <path class="road-line"
-        d="M200 650 
-           C100 550, 300 500, 200 400
-           C100 300, 300 250, 200 150
-           C150 80, 250 50, 200 20"/>
+        d="M200 700 
+           C150 600, 300 500, 200 400
+           C120 300, 280 250, 200 150
+           C180 100, 220 50, 200 10"
+        stroke-width="3"/>
 
 </svg>
 
-<!-- PINS WITH LABELS -->
+<!-- ✅ STEPS (BOTTOM → TOP) -->
 
-<div class="pin p1" onclick="openCard('card1')">
-  <div class="pin-circle c5"></div>
-  <p>Python</p>
-  <div class="popup" id="card1">
-    <b>Python Basics</b><br>
-    Variables, Loops<br>
-    Functions, APIs
+<div class="pin p1" onclick="openCard('c1')">
+  <div class="pin-dot c1"></div>
+  <span>Python</span>
+  <div id="c1" class="popup">
+    Variables, loops<br>functions
   </div>
 </div>
 
-<div class="pin p2" onclick="openCard('card2')">
-  <div class="pin-circle c2"></div>
-  <p>Data</p>
-  <div class="popup" id="card2">
-    <b>Data Handling</b><br>
-    Numpy<br>
-    Pandas
+<div class="pin p2" onclick="openCard('c2')">
+  <div class="pin-dot c2"></div>
+  <span>Data</span>
+  <div id="c2" class="popup">
+    Numpy<br>Pandas
   </div>
 </div>
 
-<div class="pin p3" onclick="openCard('card3')">
-  <div class="pin-circle c3"></div>
-  <p>ML</p>
-  <div class="popup" id="card3">
-    <b>Machine Learning</b><br>
-    Regression<br>
-    Classification
+<div class="pin p3" onclick="openCard('c3')">
+  <div class="pin-dot c3"></div>
+  <span>ML</span>
+  <div id="c3" class="popup">
+    Regression<br>Classification
   </div>
 </div>
 
-<div class="pin p4" onclick="openCard('card4')">
-  <div class="pin-circle c4"></div>
-  <p>DL</p>
-  <div class="popup" id="card4">
-    <b>Deep Learning</b><br>
-    Neural Networks<br>
-    CNN
+<div class="pin p4" onclick="openCard('c4')">
+  <div class="pin-dot c4"></div>
+  <span>DL</span>
+  <div id="c4" class="popup">
+    Neural networks<br>CNN
   </div>
 </div>
 
-<div class="pin p5" onclick="openCard('card5')">
-  <div class="pin-circle c1"></div>
-  <p>GenAI</p>
-  <div class="popup" id="card5">
-    <b>Generative AI</b><br>
-    LLMs<br>
-    RAG Systems
+<div class="pin p5" onclick="openCard('c5')">
+  <div class="pin-dot c5"></div>
+  <span>GenAI</span>
+  <div id="c5" class="popup">
+    LLMs, RAG
   </div>
 </div>
 
 </div>
 
 <div class="goal">
-🎯 FINAL DESTINATION → AI SOLUTIONS ARCHITECT
+🎯 Final → AI Solutions Architect
 </div>
 
 </body>
 </html>
+``
