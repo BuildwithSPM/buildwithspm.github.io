@@ -4,59 +4,49 @@
 <meta charset="UTF-8">
 <title>AI Roadmap</title>
 
-<!-- AOS -->
-https://unpkg.com/aos@2.3.1/dist/aos.css
-https://unpkg.com/aos@2.3.1/dist/aos.js>
-
-<!-- Icons -->
-https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css
-
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(to right, #fff7cc, #ffe066);
+  font-family: 'Poppins', Arial;
+  background: linear-gradient(135deg, #EAEAF4, #CFCFE7);
   color: #222;
 }
 
 /* HEADER */
 .header {
   text-align: center;
-  padding: 40px;
+  padding: 30px;
 }
 
 .header h1 {
-  font-size: 42px;
-  color: #222;
+  color: #4B4376;
 }
 
-/* LEVEL TITLE */
-.level {
-  margin-top: 50px;
-  text-align: center;
-  color: #444;
+/* MAIN CONTAINER */
+.container {
+  width: 80%;
+  margin: auto;
 }
 
-/* CARD */
+/* CARD STYLE */
 .card {
-  width: 70%;
-  margin: 20px auto;
-  border-radius: 15px;
-  background: white;
-  overflow: hidden;
-  cursor: pointer;
+  background: #4B4376;
+  color: white;
+  margin: 20px 0;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
   transition: 0.3s;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px);
 }
 
-/* HEADER PART */
+/* HEADER INSIDE CARD */
 .card-header {
-  padding: 20px;
-  background: #ffd700;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
@@ -65,27 +55,38 @@ body {
 /* CONTENT */
 .card-content {
   display: none;
-  padding: 20px;
+  margin-top: 15px;
 }
 
 /* BUTTON */
 .btn {
-  padding: 8px 12px;
-  background: #222;
-  color: yellow;
-  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #E4B36D;
+  color: #222;
+  border-radius: 20px;
   text-decoration: none;
   font-weight: bold;
 }
 
 /* TAG */
 .tag {
-  background: #222;
-  color: yellow;
+  background: #E4B36D;
+  color: #222;
   padding: 5px 10px;
   border-radius: 10px;
   font-size: 12px;
 }
+
+/* LEVEL */
+.level {
+  color: #3A345B;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* toggle */
 </style>
 
 <script>
@@ -101,81 +102,83 @@ function toggleCard(card) {
 
 <div class="header">
   <h1>🚀 AI Solutions Architect Roadmap</h1>
-  <p>Click each step to expand 👇</p>
 </div>
 
-<!-- BEGINNER -->
-<h2 class="level">🔰 Beginner</h2>
+<div class="container">
 
-<div class="card" onclick="toggleCard(this)" data-aos="fade-up">
+<h2 class="level">Beginner</h2>
+
+<div class="card" onclick="toggleCard(this)">
   <div class="card-header">
     Python Basics <span class="tag">Week 1</span>
   </div>
   <div class="card-content">
-    <p>Learn variables, loops, functions</p>
-    #Start Learning</a>
+    Learn loops, functions and basics
+    <br>
+    <a class="btn" href="#">Start Learning</a>
   </div>
 </div>
 
-<div class="card" onclick="toggleCard(this)" data-aos="fade-up">
+<div class="card" onclick="toggleCard(this)">
   <div class="card-header">
     Data Handling <span class="tag">Week 2</span>
   </div>
   <div class="card-content">
-    <p>Numpy, Pandas basics</p>
-    #Start Learning</a>
+    Numpy, Pandas basics
+    <br>
+    <a class="btn" href="#">Start Learning</a>
   </div>
 </div>
 
-<!-- INTERMEDIATE -->
-<h2 class="level">📊 Intermediate</h2>
+<h2 class="level">Intermediate</h2>
 
-<div class="card" onclick="toggleCard(this)" data-aos="fade-left">
+<div class="card" onclick="toggleCard(this)">
   <div class="card-header">
     Machine Learning <span class="tag">Week 5</span>
   </div>
   <div class="card-content">
-    <p>Regression, Classification</p>
-    #Start Learning</a>
+    Regression, classification
+    <br>
+    <a class="btn" href="#">Start Learning</a>
   </div>
 </div>
 
-<div class="card" onclick="toggleCard(this)" data-aos="fade-right">
+<div class="card" onclick="toggleCard(this)">
   <div class="card-header">
     Deep Learning <span class="tag">Week 7</span>
   </div>
   <div class="card-content">
-    <p>Neural networks basics</p>
-    #Start Learning</a>
+    Neural networks
+    <br>
+    <a class="btn" href="#">Start Learning</a>
   </div>
 </div>
 
-<!-- ADVANCED -->
-<h2 class="level">🤖 Advanced</h2>
+<h2 class="level">Advanced</h2>
 
-<div class="card" onclick="toggleCard(this)" data-aos="zoom-in">
+<div class="card" onclick="toggleCard(this)">
   <div class="card-header">
     Generative AI <span class="tag">Week 9</span>
   </div>
   <div class="card-content">
-    <p>LLMs, Prompt Engineering, RAG</p>
-    #Start Learning</a>
+    LLMs, Prompt Engineering
+    <br>
+    <a class="btn" href="#">Start Learning</a>
   </div>
 </div>
 
-<div class="card" onclick="toggleCard(this)" data-aos="zoom-in">
+<div class="card" onclick="toggleCard(this)">
   <div class="card-header">
     System Design <span class="tag">Week 11</span>
   </div>
   <div class="card-content">
-    <p>Architecture, scalability</p>
-    #Start Learning</a>
+    Architecture and scaling
+    <br>
+    <a class="btn" href="#">Start Learning</a>
   </div>
 </div>
 
-<script>
-AOS.init({ duration: 1000 });
-</script>
+</div>
 
 </body>
 </html>
